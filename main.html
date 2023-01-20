@@ -57,6 +57,21 @@
         if (callNow) func.apply(context, args);
       };
     }
+    const sliderImage = document.querySelectorAll('.slide-in');
+    for(let t of sliderImage) {
+      document.addEventListener("scroll",()=>assignActive(t))
+    }
+    function assignactive(e){
+      const visible = checkVisible(e)
+      if(visible){
+        e.classList.add("active")
+      }
+    }
+    function checkvisible(elm){
+      var rect = elm.getBoundingClientRect();
+      var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
+      return !(rect.bottom < 0|| rect.top - viewHeight >=0);
+    }
 
   </script>
 
